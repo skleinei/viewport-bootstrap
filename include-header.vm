@@ -1,0 +1,38 @@
+    <a class="sr-only" href="#content">Skip navigation</a>
+
+    <!-- Navigation Bar -->
+    <header class="navbar navbar-default navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="${viewport.absoluteLink}" class="navbar-brand">$repository.name</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                <ul class="nav navbar-nav">
+                    #if ($hasPages)
+                    <li #if (!$url.path.startsWith("${viewport.link}/blog")) class="active" #end>
+                        <a href="${viewport.link}/">Home</a>
+                    </li>
+                    #end
+                    #if ($hasBlogPosts)
+                    <li #if ($url.path.startsWith("${viewport.link}/blog")) class="active" #end>
+                        <a href="${viewport.link}/blog">Blog</a>
+                    </li>
+                    #end
+                </ul>
+
+                <button id="sp-viewport-control-opener" type="button" class="btn btn-default pull-right" style="margin: 8px -15px 0 30px;">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                </button>
+
+                <form action="${viewport.link}/search" method="GET" class="navbar-form pull-right" style="padding-right: 0; margin-right: -15px;">
+                    <input type="text" value="$!searchRequest.queryString" class="form-control col-lg-8" placeholder="Search" autocomplete="off" name="q" />
+                </form>
+            </nav>
+        </div>
+    </header>
